@@ -27,4 +27,4 @@ jobs:
       #- name: Run a one-line script
         run: |
           docker-compose up -d
-          exec -it php php artisan migrate
+          docker-compose exec -it php php artisan migrate
