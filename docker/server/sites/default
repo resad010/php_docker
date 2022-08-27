@@ -6,7 +6,7 @@ server {
     server_name _;
 
     # here is the public directory of your website (the application itself will be on /var/www/html; directory)
-    root /var/www/api/public;
+    root /home/ubuntu/actions-runner/_work/php_docker/php_docker/files_be/public;;
 
     location / {
         try_files $uri /index.php$is_args$args;
