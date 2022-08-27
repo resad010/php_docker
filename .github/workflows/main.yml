@@ -25,5 +25,6 @@ jobs:
       - name: Build and migrate
       # Runs a single command using the runners shell
       #- name: Run a one-line script
-      - run: docker-compose up -d
-      - run: exec -it php php artisan migrate
+        run: |
+          docker-compose up -d
+          exec -it php php artisan migrate
