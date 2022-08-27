@@ -1,0 +1,47 @@
+version: '3'
+services:
+    db:
+        image: mariadb:${MARIADB_VERSION}
+        env_file: docker/db/db.env
+        container_name: ${APP_NAME}_mysql
+        restart: always
+        volumes:
+            - mysql_data:/var/lib/mysql
+    myadmin:
+        image: phpmyadmin
+        container_name: ${APP_NAME}_phpmyadmin
+        ports:
+            -   "8080:80"
+        restart: always
+        depends_on:
+            -   db
+    nginx:
+        build: docker/server
+        container_name: ${APP_NAME}_nginx
+        ports:
+            -   "80:80"
+        depends_on:
+            -   php
+#            -   node
+        volumes:
+            -   node_files:/var/www/front
+    php:
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile
+            args:
+                LARAVEL_VERSION: ${LARAVEL_VERSION}
+        volumes:
+            -  /var/www/api/vendor
+            - ./files_be:/var/www/api
+        container_name: ${APP_NAME}_php
+#    node:
+#        build:
+#            context: .
+#            dockerfile: files_fe/Dockerfile
+#        volumes:
+#            - node_files:/front_temp/build
+volumes:
+    mysql_data:
+    php_temp:
+    node_files:
