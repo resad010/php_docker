@@ -33,7 +33,5 @@ RUN mkdir -p storage/framework/cache
 RUN chmod o+w ./storage/ -R
 RUN chown -R $USER:www-data storage
 RUN chown -R $USER:www-data bootstrap/cache
-RUN php artisan key:generate
-RUN php artisan config:cache
 
 
