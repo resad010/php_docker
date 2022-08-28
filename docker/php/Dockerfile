@@ -32,6 +32,6 @@ RUN mkdir -p storage/framework/views
 RUN mkdir -p storage/framework/cache
 RUN chmod o+w ./storage/ -R
 RUN chown -R $USER:www-data storage
-RUN chown -R $USER:www-data bootstrap/cache
-
+#RUN chown -R $USER:www-data bootstrap/cache
+RUN chmod -R 775 storage bootstrap/cache
 
