@@ -21,6 +21,7 @@ COPY /files_be/composer.json ./temp
 RUN composer install --working-dir temp
 
 COPY /files_be ./api
+COPY /files_be/.env.prod /var/www/html/.env
 RUN cp -r temp/vendor api
 RUN composer install --working-dir api
 RUN rm -r temp
