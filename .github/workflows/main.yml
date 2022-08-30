@@ -26,7 +26,8 @@ jobs:
       # Runs a single command using the runners shell
       #- name: Run a one-line script
         run: |
+          echo '${{ secrets.ENV }}' > .env.prod
           docker-compose down
           docker-compose up -d
-          docker-compose exec -it php php artisan migrate
+#          docker exec -it pdp_php php artisan migrate
 #
