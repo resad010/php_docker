@@ -10,7 +10,6 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -20,6 +19,8 @@ jobs:
     environment: LARAVEL_PROD
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - env:
+          LARAVEL: '${{ secrets.env }}'
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Build and migrate
@@ -29,4 +30,5 @@ jobs:
           docker-compose down
           docker-compose up -d
           docker-compose exec -it php php artisan migrate
+          echo '${{ secrets.ENV }}' > .env.prod
 #
