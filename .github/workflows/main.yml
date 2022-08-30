@@ -28,5 +28,5 @@ jobs:
           docker-compose down
           docker-compose up -d
 #          docker-compose exec -it php php artisan migrate
-          echo '${{ secrets.LARAVEL }}' > .env.prod
+          echo '${{ secrets.ENV }}' > .env.prod
 #
