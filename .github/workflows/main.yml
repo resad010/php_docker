@@ -30,9 +30,9 @@ jobs:
           docker-compose down
           docker-compose up -d
           cp .env.prod files_be/.env
-          docker exec -t pdp_php php artisan migrate
           docker exec -t pdp_php chmod o+w ./storage/ -R
           docker exec -t pdp_php chown -R $USER:www-data storage
           docker exec -t pdp_php chmod -R 775 storage bootstrap/cache
+          docker exec -t pdp_php php artisan migrate
 
 #
