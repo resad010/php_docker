@@ -34,8 +34,6 @@ services:
         volumes:
             -  /var/www/api/vendor
             - ./files_be:/var/www/api
-#        env_file:
-#            - ./files_be/.env
         container_name: ${APP_NAME}_php
 #    node:
 #        build:
