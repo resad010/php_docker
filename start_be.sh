@@ -1,3 +1,3 @@
 #!/bin/bash
 docker-compose up -d
-docker-compose exec -it php php artisan migrate
+docker exec -t pdp_php php artisan migrate
